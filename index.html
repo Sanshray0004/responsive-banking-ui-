@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Banking UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Bank Account</h2>
+      <div class="balance-display">
+        <p>Balance</p>
+        <h1 id="balance">₹0.00</h1>
+      </div>
+      <div class="buttons">
+        <button onclick="deposit()">Deposit ₹500</button>
+        <button onclick="withdraw()">Withdraw ₹500</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let balance = 0;
+
+    function updateBalance() {
+      document.getElementById('balance').innerText = `₹${balance.toFixed(2)}`;
+    }
+
+    function deposit() {
+      balance += 500;
+      updateBalance();
+    }
+
+    function withdraw() {
+      if (balance >= 500) {
+        balance -= 500;
+        updateBalance();
+      } else {
+        alert("Insufficient Balance");
+      }
+    }
+
+    updateBalance();
+  </script>
+</body>
+</html>
